@@ -11,7 +11,7 @@ import math
 import logging
 
 # to support more keywords for cells add them here
-mcnp_cell_keywords = ["imp","u","fill","vol", "tmp"]
+mcnp_cell_keywords = ["imp","u","fill","vol", "tmp", "like", "but", "trcl"]
 
 # if the string is a cell card or not
 def is_cell_card(line):
@@ -304,6 +304,14 @@ class MCNPCellCard(CellCard):
         tokens = string.split()
 
         self.cell_id = int(tokens[0])
+        
+        # judge if there is like but in cell definition 
+        if (tokens[1] == 'like'):
+            
+            return 
+        else:
+            pass 
+        
         material_number = int(tokens[1])
         if material_number > 0 :
             self.cell_material_number = int(material_number)
